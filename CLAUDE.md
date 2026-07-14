@@ -10,8 +10,12 @@
 4. GitHub Pagesを有効化する(mainブランチ / root)
 5. 公開URLを確認してユーザーに報告する
 
+## ドメイン
+- カスタムドメイン: seattleshizuoka.org(2026-07-14設定済み)
+- DNSはCloudflareで管理。Aレコード4件(185.199.108-111.153)とCNAME(www -> kye-lab.github.io)、いずれもDNS only(Proxyオフ)
+- リポジトリのCNAMEファイルとGitHub Pagesのカスタムドメイン設定済み
+
 ## 今後の予定
-- カスタムドメイン seattleshizuoka.org を取得予定。取得後にCNAME設定を行い、レジストラに入力するDNSレコードをユーザーに案内する
 - Facebookページ開設後、index.html内のコメント箇所にリンクを追加する
 
 ## 編集ルール
