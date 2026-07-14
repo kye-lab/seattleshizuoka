@@ -13,7 +13,8 @@
 ## ドメイン
 - カスタムドメイン: seattleshizuoka.org(2026-07-14設定済み)
 - DNSはCloudflareで管理。Aレコード4件(185.199.108-111.153)とCNAME(www -> kye-lab.github.io)、いずれもDNS only(Proxyオフ)
-- リポジトリのCNAMEファイルとGitHub Pagesのカスタムドメイン設定済み
+- リポジトリのCNAMEファイルは設置済み
+- 2026-07-14: サイト未完成のためGitHub Pagesを一時無効化中。再公開時は `gh api -X POST repos/kye-lab/seattleshizuoka/pages -f "source[branch]=main" -f "source[path]=/"` でPagesを有効化し、カスタムドメイン(cname=seattleshizuoka.org)とEnforce HTTPSを再設定する
 
 ## 今後の予定
 - Facebookページ開設後、index.html内のコメント箇所にリンクを追加する
