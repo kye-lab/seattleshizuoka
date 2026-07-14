@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シアトル静岡県人会 | Seattle Shizuoka Club</title>
+<meta name="description" content="シアトル近郊に暮らす静岡県ゆかりの人々のコミュニティ、シアトル静岡県人会(Seattle Shizuoka Club)の公式ページ。">
+<meta property="og:title" content="シアトル静岡県人会 | Seattle Shizuoka Club">
+<meta property="og:description" content="静岡にゆかりのある方、静岡が好きな方なら、どなたでも歓迎します。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232E5D46'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23fff' font-family='serif'%3E静%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F8F5;
+  --ink:#243233;
+  --tea:#2E5D46;
+  --tea-deep:#234936;
+  --tea-wash:#EDF3EE;
+  --bay:#4A6B85;
+  --mist:#5E7180;
+  --line:rgba(46,93,70,.25);
+  --mincho:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --gothic:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--gothic);
+  background:var(--paper);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--tea)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--bay);outline-offset:3px;border-radius:2px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;padding:8px 16px;z-index:99}
+.skip:focus{left:12px;top:12px}
+
+/* header */
+header{padding:20px 0}
+.head-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.mark{width:30px;height:30px;border-radius:7px;background:var(--tea);color:#fff;font-family:var(--mincho);font-size:19px;display:flex;align-items:center;justify-content:center;line-height:1}
+.brand span{font-size:13px;letter-spacing:.18em;color:var(--mist)}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{font-size:13px;letter-spacing:.08em;text-decoration:none;color:var(--ink)}
+nav a:hover{color:var(--tea)}
+
+/* hero */
+.hero{padding:56px 0 0}
+.eyebrow{font-size:11px;letter-spacing:.3em;color:var(--bay);text-transform:uppercase}
+h1{font-family:var(--mincho);font-weight:600;font-size:clamp(2.2rem,6.5vw,3.8rem);letter-spacing:.06em;margin:14px 0 10px}
+.tagline{font-family:var(--mincho);font-size:clamp(1.15rem,3vw,1.45rem);color:var(--tea);letter-spacing:.12em}
+.hero .en{margin-top:10px}
+.hero-cta{margin-top:30px}
+.btn{display:inline-block;background:var(--tea);color:#fff;text-decoration:none;font-size:14.5px;letter-spacing:.08em;padding:13px 30px;border-radius:8px}
+.btn:hover{background:var(--tea-deep)}
+
+.en{color:var(--mist);font-size:.95em;line-height:1.75}
+
+/* mountains */
+.peaks{margin-top:44px}
+.peaks svg{display:block;width:100%;height:auto}
+.arc{opacity:0;animation:arcIn 1.4s ease-out .7s forwards}
+@keyframes arcIn{to{opacity:1}}
+.hero-fade>*{opacity:0;animation:rise .7s ease-out both}
+.hero-fade>*:nth-child(1){animation-delay:.05s}
+.hero-fade>*:nth-child(2){animation-delay:.15s}
+.hero-fade>*:nth-child(3){animation-delay:.25s}
+.hero-fade>*:nth-child(4){animation-delay:.35s}
+.hero-fade>*:nth-child(5){animation-delay:.45s}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .arc,.hero-fade>*{animation:none;opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+.peak-caps{display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.12em;color:var(--mist);padding:8px 5% 0 7%}
+.peak-caps .r{text-align:right}
+@media (max-width:640px){.peak-caps{font-size:10.5px;padding:6px 3% 0 3%}}
+
+/* sections */
+section{padding:72px 0}
+.band{background:var(--tea-wash)}
+.sec-head{margin-bottom:28px}
+.sec-head .eyebrow{display:block;margin-bottom:8px}
+h2{font-family:var(--mincho);font-weight:600;font-size:1.65rem;letter-spacing:.1em;display:inline-block;padding-bottom:10px;border-bottom:2px dotted var(--tea)}
+.cols p+p{margin-top:14px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 24px}
+.card h3{font-family:var(--mincho);font-weight:600;font-size:1.08rem;letter-spacing:.08em;margin-bottom:10px;color:var(--tea-deep)}
+.card p{font-size:.95rem}
+.card .en{margin-top:8px;font-size:.88rem}
+
+/* join */
+.join-box{background:#fff;border:2px dotted var(--tea);border-radius:14px;padding:34px 30px}
+.join-box .btn{margin-top:22px}
+@media (max-width:640px){.join-box{padding:26px 20px}}
+
+/* contact */
+.email{font-size:clamp(1.05rem,3.5vw,1.4rem);font-weight:500;letter-spacing:.03em;word-break:break-all;text-decoration:none;border-bottom:2px solid var(--line)}
+.email:hover{border-bottom-color:var(--tea)}
+.contact-note{margin-top:16px;font-size:.92rem;color:var(--mist)}
+footer{border-top:1px solid var(--line);padding:26px 0 52px;font-size:12.5px;letter-spacing:.08em;color:var(--mist)}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">本文へ</a>
+
+<header class="wrap">
+  <div class="head-row">
+    <a class="brand" href="#top"><span class="mark">静</span><span>SSKK</span></a>
+    <nav>
+      <a href="#about">会について</a>
+      <a href="#activities">活動</a>
+      <a href="#join">入会</a>
+      <a href="#contact">連絡先</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero-fade">
+    <p class="eyebrow">Seattle Shizuoka Club</p>
+    <h1>シアトル静岡県人会</h1>
+    <p class="tagline">ふたつの富士を、つなぐ。</p>
+    <p class="en" lang="en">A community for Shizuoka people and friends in Seattle.</p>
+    <p class="hero-cta"><a class="btn" href="#join">入会のご案内 / How to Join</a></p>
+  </div>
+
+  <div class="peaks">
+    <svg viewBox="0 0 1200 290" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <!-- 富士山 -->
+      <path d="M90,250 C200,208 252,152 279,113 L288,119 L298,112 L308,118 L318,112 L323,113 C350,152 402,208 512,250 Z" fill="#EAF1F5" stroke="#4A6B85" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M266,132 C274,118 284,112 301,112 C318,112 328,118 336,132 L325,144 L313,132 L301,145 L289,132 L277,144 Z" fill="#FFFFFF" stroke="#4A6B85" stroke-width="1.2" stroke-linejoin="round"/>
+      <!-- レーニア山 -->
+      <path d="M672,250 C740,242 786,214 818,180 C838,159 852,143 866,135 C874,130 880,126 887,127 C893,128 897,132 901,136 C905,132 911,126 919,123 C931,119 944,122 953,131 C974,152 998,186 1022,210 C1050,238 1090,246 1136,250 Z" fill="#E9F1EC" stroke="#4A6B85" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M836,168 C852,148 864,138 887,128 C910,120 936,120 953,132 C966,142 978,158 988,172 L974,166 L962,178 L948,168 L934,180 L918,170 L904,182 L890,170 L874,180 L860,168 L848,176 Z" fill="#FFFFFF" stroke="#4A6B85" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="M901,137 C898,160 894,186 886,208" fill="none" stroke="#4A6B85" stroke-width=".8" opacity=".5"/>
+      <path d="M919,124 C922,152 928,180 938,204" fill="none" stroke="#4A6B85" stroke-width=".8" opacity=".5"/>
+      <!-- 海 -->
+      <line x1="0" y1="250" x2="1200" y2="250" stroke="#4A6B85" stroke-width="1" opacity=".55"/>
+      <path d="M538,259 q9,-6 18,0 q9,6 18,0" fill="none" stroke="#4A6B85" stroke-width="1.2" opacity=".45"/>
+      <path d="M596,267 q9,-6 18,0 q9,6 18,0" fill="none" stroke="#4A6B85" stroke-width="1.2" opacity=".45"/>
+      <path d="M560,274 q9,-6 18,0 q9,6 18,0" fill="none" stroke="#4A6B85" stroke-width="1.2" opacity=".45"/>
+      <!-- 峰をつなぐ点線 -->
+      <path class="arc" d="M301,100 Q612,16 936,112" fill="none" stroke="#2E5D46" stroke-width="2" stroke-dasharray="1.5 9" stroke-linecap="round"/>
+    </svg>
+    <div class="wrap peak-caps">
+      <span>富士山 Mt. Fuji ・ 静岡</span>
+      <span class="r">レーニア山 Mt. Rainier(タコマ富士)・ シアトル</span>
+    </div>
+  </div>
+</div>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">About</span><h2>会について</h2></div>
+    <div class="cols">
+      <p>シアトル静岡県人会(Seattle Shizuoka Club)は、シアトル近郊に暮らす静岡県ゆかりの人々のコミュニティです。静岡出身の方はもちろん、静岡に住んだことがある方、家族のルーツがある方、静岡が好きな方まで、どなたでも参加できます。</p>
+      <p>交流会を通じて親睦を深めるとともに、太平洋をはさんだ静岡とシアトルの架け橋となることを目指しています。</p>
+      <p class="en" lang="en">Seattle Shizuoka Club (SSKK) is a community for people in the greater Seattle area with ties to Shizuoka Prefecture, Japan. Whether you were born there, lived there, have family roots there, or simply love the place, you are welcome. We gather to build friendships and to serve as a bridge between Shizuoka and Seattle across the Pacific.</p>
+    </div>
+  </div>
+</section>
+
+<section id="activities" class="band">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">What We Do</span><h2>活動</h2></div>
+    <div class="cards">
+      <div class="card">
+        <h3>交流会・イベント</h3>
+        <p>会員が集まる親睦会や季節のイベントを開催します。</p>
+        <p class="en" lang="en">Social gatherings and seasonal events for members and friends.</p>
+      </div>
+      <div class="card">
+        <h3>静岡との連携</h3>
+        <p>静岡県や県内の市町とのつながりを深め、静岡とシアトルの間の交流を広げていきます。</p>
+        <p class="en" lang="en">Building ties with Shizuoka Prefecture and its municipalities to grow exchange between Shizuoka and Seattle.</p>
+      </div>
+      <div class="card">
+        <h3>文化・学生交流</h3>
+        <p>文化紹介や学生交流など、日米をつなぐ活動を応援します。</p>
+        <p class="en" lang="en">Supporting cultural programs and student exchange between Japan and the U.S.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Join</span><h2>入会のご案内</h2></div>
+    <div class="join-box">
+      <p>静岡にゆかりのある方、静岡に興味のある方なら、どなたでも歓迎します。参加をご希望の方は、メールでお気軽にご連絡ください。メーリングリストで交流会やイベントのご案内をお送りします。</p>
+      <p class="en" lang="en">Anyone with a connection to Shizuoka, or simply an interest in it, is welcome to join. Send us an email and we will add you to our mailing list for event announcements.</p>
+      <a class="btn" href="mailto:sea_shizuoka_club@googlegroups.com?subject=Join%20SSKK">入会を申し込む / Join us</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Contact</span><h2>連絡先</h2></div>
+    <p><a class="email" href="mailto:sea_shizuoka_club@googlegroups.com">sea_shizuoka_club@googlegroups.com</a></p>
+    <p class="contact-note">Seattle, Washington, U.S.A.</p>
+    <!-- Facebookページ開設後、ここにリンクを追加:
+    <p class="contact-note"><a href="https://www.facebook.com/XXXX">Facebook</a></p>
+    -->
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">シアトル静岡県人会 Seattle Shizuoka Club ・ Seattle, WA ・ © 2026</div>
+</footer>
+</body>
+</html>
