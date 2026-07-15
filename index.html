@@ -21,6 +21,10 @@
   --bay:#4A6B85;
   --mist:#5E7180;
   --line:rgba(46,93,70,.25);
+  --pk-stroke:#4A6B85;
+  --pk-fuji:#EAF1F5;
+  --pk-rai:#E9F1EC;
+  --pk-arc:#2E5D46;
   --mincho:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
   --gothic:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
 }
@@ -43,12 +47,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bay);outline-offset
 /* header */
 header{padding:20px 0}
 .head-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.mark{width:30px;height:30px;border-radius:7px;background:var(--tea);color:#fff;font-family:var(--mincho);font-size:19px;display:flex;align-items:center;justify-content:center;line-height:1}
-.brand span{font-size:13px;letter-spacing:.18em;color:var(--mist)}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--ink)}
+.brand span{font-family:var(--mincho);font-size:15px;letter-spacing:.02em;color:var(--ink);font-weight:600}
 nav{display:flex;gap:22px;flex-wrap:wrap}
 nav a{font-size:13px;letter-spacing:.08em;text-decoration:none;color:var(--ink)}
 nav a:hover{color:var(--tea)}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.lang button{border:0;background:none;font-family:var(--gothic);font-size:12px;letter-spacing:.06em;padding:5px 13px;cursor:pointer;color:var(--mist);line-height:1.5}
+.lang button[aria-pressed="true"]{background:var(--tea);color:#fff}
+body[data-lang="en"] .t-ja{display:none}
+body:not([data-lang="en"]) .t-en{display:none}
+body[data-lang="en"] .cols .en,body[data-lang="en"] .card .en,body[data-lang="en"] .join-box .en{color:var(--ink);font-size:1em;margin-top:0}
 
 /* hero */
 .hero{padding:56px 0 0}
@@ -110,51 +119,76 @@ h2{font-family:var(--mincho);font-weight:600;font-size:1.65rem;letter-spacing:.1
 footer{border-top:1px solid var(--line);padding:26px 0 52px;font-size:12.5px;letter-spacing:.08em;color:var(--mist)}
 </style>
 </head>
-<body>
-<a class="skip" href="#about">本文へ</a>
+<body data-lang="ja">
+<a class="skip" href="#about"><span class="t-ja">本文へ</span><span class="t-en">Skip to content</span></a>
 
 <header class="wrap">
   <div class="head-row">
-    <a class="brand" href="#top"><span class="mark">静</span><span>SSKK</span></a>
+    <a class="brand" href="#top"><span><span class="t-ja">シアトル静岡県人会</span><span class="t-en">Seattle Shizuoka Club</span></span></a>
     <nav>
-      <a href="#about">会について</a>
-      <a href="#activities">活動</a>
-      <a href="#join">入会</a>
-      <a href="#contact">連絡先</a>
+      <a href="#about"><span class="t-ja">会について</span><span class="t-en">About</span></a>
+      <a href="#activities"><span class="t-ja">活動</span><span class="t-en">Activities</span></a>
+      <a href="#join"><span class="t-ja">入会</span><span class="t-en">Join</span></a>
+      <a href="#contact"><span class="t-ja">連絡先</span><span class="t-en">Contact</span></a>
     </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-setlang="ja" aria-pressed="true">日本語</button>
+      <button type="button" data-setlang="en" aria-pressed="false">English</button>
+    </div>
   </div>
 </header>
 
 <div class="hero" id="top">
   <div class="wrap hero-fade">
-    <p class="eyebrow">Seattle Shizuoka Club</p>
-    <h1>シアトル静岡県人会</h1>
-    <p class="tagline">ふたつの富士を、つなぐ。</p>
-    <p class="en" lang="en">A community for Shizuoka people and friends in Seattle.</p>
-    <p class="hero-cta"><a class="btn" href="#join">入会のご案内 / How to Join</a></p>
+    <p class="eyebrow"><span class="t-ja">Seattle Shizuoka Club</span><span class="t-en" lang="ja">シアトル静岡県人会</span></p>
+    <h1><span class="t-ja">シアトル静岡県人会</span><span class="t-en" lang="en">Seattle Shizuoka Club</span></h1>
+    <p class="tagline"><span class="t-ja">ふたつの富士を、つなぐ。</span><span class="t-en" lang="en">Bridging two Fujis.</span></p>
+    <p class="en"><span class="t-ja" lang="en">A community for Shizuoka people and friends in Seattle.</span><span class="t-en" lang="ja">シアトル近郊に暮らす、静岡ゆかりの人々のコミュニティ。</span></p>
+    <p class="hero-cta"><a class="btn" href="#join"><span class="t-ja">入会のご案内 / How to Join</span><span class="t-en">How to Join</span></a></p>
   </div>
 
   <div class="peaks">
     <svg viewBox="0 0 1200 290" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <defs>
+        <clipPath id="fujiClip"><path d="M70,250 C195,213 248,158 277,115 L285,120 L293,112 L302,117 L311,111 L319,117 L327,113 C341,136 356,156 372,172 C377,175 381,177 386,176 C392,176 397,172 403,170 C410,168 418,177 428,190 C454,216 492,237 534,250 Z"/></clipPath>
+        <clipPath id="raiClip"><path d="M640,250 C712,243 762,222 800,192 C824,173 846,150 866,138 C874,133 880,131 886,132 C892,133 897,137 901,141 C905,134 912,126 921,122 C934,116 948,119 958,128 C966,135 972,144 980,155 L990,148 L1002,170 C1014,186 1030,206 1048,220 C1076,241 1108,247 1150,250 Z"/></clipPath>
+      </defs>
+      <!-- 遠景の丘 -->
+      <path d="M0,250 C70,238 145,234 210,243 C235,246 254,248 272,250 Z" fill="var(--pk-fuji)" opacity=".55"/>
+      <path d="M985,250 C1045,240 1110,236 1200,243 L1200,250 Z" fill="var(--pk-rai)" opacity=".55"/>
+      <!-- 朝日 -->
+      <circle class="sun" cx="600" cy="112" r="25" fill="var(--pk-arc)" fill-opacity=".07" stroke="var(--pk-arc)" stroke-width="1.2" opacity=".6"/>
       <!-- 富士山 -->
-      <path d="M90,250 C200,208 252,152 279,113 L288,119 L298,112 L308,118 L318,112 L323,113 C350,152 402,208 512,250 Z" fill="#EAF1F5" stroke="#4A6B85" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M266,132 C274,118 284,112 301,112 C318,112 328,118 336,132 L325,144 L313,132 L301,145 L289,132 L277,144 Z" fill="#FFFFFF" stroke="#4A6B85" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="M70,250 C195,213 248,158 277,115 L285,120 L293,112 L302,117 L311,111 L319,117 L327,113 C341,136 356,156 372,172 C377,175 381,177 386,176 C392,176 397,172 403,170 C410,168 418,177 428,190 C454,216 492,237 534,250 Z" fill="var(--pk-fuji)" stroke="var(--pk-stroke)" stroke-width="1.5" stroke-linejoin="round"/>
+      <path clip-path="url(#fujiClip)" d="M238,88 L366,88 L366,146 L352,141 L340,157 L328,144 L316,160 L304,145 L292,158 L280,144 L268,153 L256,142 L246,150 L238,146 Z" fill="#FFFFFF" stroke="var(--pk-stroke)" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="M70,250 C195,213 248,158 277,115 L285,120 L293,112 L302,117 L311,111 L319,117 L327,113 C341,136 356,156 372,172 C377,175 381,177 386,176 C392,176 397,172 403,170 C410,168 418,177 428,190 C454,216 492,237 534,250" fill="none" stroke="var(--pk-stroke)" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M289,127 C284,162 276,200 263,231" fill="none" stroke="var(--pk-stroke)" stroke-width=".8" opacity=".4"/>
+      <path d="M315,126 C321,162 330,200 343,231" fill="none" stroke="var(--pk-stroke)" stroke-width=".8" opacity=".4"/>
+      <g class="deco">
+        <rect x="128" y="197" width="170" height="13" rx="6.5" fill="var(--paper)" stroke="var(--pk-stroke)" stroke-width="1" opacity=".85"/>
+        <rect x="352" y="216" width="142" height="12" rx="6" fill="var(--paper)" stroke="var(--pk-stroke)" stroke-width="1" opacity=".7"/>
+      </g>
       <!-- レーニア山 -->
-      <path d="M672,250 C740,242 786,214 818,180 C838,159 852,143 866,135 C874,130 880,126 887,127 C893,128 897,132 901,136 C905,132 911,126 919,123 C931,119 944,122 953,131 C974,152 998,186 1022,210 C1050,238 1090,246 1136,250 Z" fill="#E9F1EC" stroke="#4A6B85" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M836,168 C852,148 864,138 887,128 C910,120 936,120 953,132 C966,142 978,158 988,172 L974,166 L962,178 L948,168 L934,180 L918,170 L904,182 L890,170 L874,180 L860,168 L848,176 Z" fill="#FFFFFF" stroke="#4A6B85" stroke-width="1.2" stroke-linejoin="round"/>
-      <path d="M901,137 C898,160 894,186 886,208" fill="none" stroke="#4A6B85" stroke-width=".8" opacity=".5"/>
-      <path d="M919,124 C922,152 928,180 938,204" fill="none" stroke="#4A6B85" stroke-width=".8" opacity=".5"/>
+      <path d="M640,250 C712,243 762,222 800,192 C824,173 846,150 866,138 C874,133 880,131 886,132 C892,133 897,137 901,141 C905,134 912,126 921,122 C934,116 948,119 958,128 C966,135 972,144 980,155 L990,148 L1002,170 C1014,186 1030,206 1048,220 C1076,241 1108,247 1150,250 Z" fill="var(--pk-rai)" stroke="var(--pk-stroke)" stroke-width="1.5" stroke-linejoin="round"/>
+      <path clip-path="url(#raiClip)" d="M800,108 L994,108 L994,160 L980,155 L968,171 L954,159 L942,175 L928,161 L914,177 L900,163 L886,175 L872,160 L858,171 L844,159 L830,175 L818,163 L806,171 L800,166 Z" fill="#FFFFFF" stroke="var(--pk-stroke)" stroke-width="1.2" stroke-linejoin="round"/>
+      <path clip-path="url(#raiClip)" d="M980,155 L990,146 L1000,163 L990,170 L982,160 Z" fill="#FFFFFF" stroke="var(--pk-stroke)" stroke-width="1" stroke-linejoin="round"/>
+      <path d="M640,250 C712,243 762,222 800,192 C824,173 846,150 866,138 C874,133 880,131 886,132 C892,133 897,137 901,141 C905,134 912,126 921,122 C934,116 948,119 958,128 C966,135 972,144 980,155 L990,148 L1002,170 C1014,186 1030,206 1048,220 C1076,241 1108,247 1150,250" fill="none" stroke="var(--pk-stroke)" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M899,143 C895,170 889,198 880,222" fill="none" stroke="var(--pk-stroke)" stroke-width=".8" opacity=".4"/>
+      <path d="M921,124 C925,155 932,186 942,211" fill="none" stroke="var(--pk-stroke)" stroke-width=".8" opacity=".4"/>
+      <path d="M956,130 C963,158 973,186 985,207" fill="none" stroke="var(--pk-stroke)" stroke-width=".8" opacity=".4"/>
       <!-- 海 -->
-      <line x1="0" y1="250" x2="1200" y2="250" stroke="#4A6B85" stroke-width="1" opacity=".55"/>
-      <path d="M538,259 q9,-6 18,0 q9,6 18,0" fill="none" stroke="#4A6B85" stroke-width="1.2" opacity=".45"/>
-      <path d="M596,267 q9,-6 18,0 q9,6 18,0" fill="none" stroke="#4A6B85" stroke-width="1.2" opacity=".45"/>
-      <path d="M560,274 q9,-6 18,0 q9,6 18,0" fill="none" stroke="#4A6B85" stroke-width="1.2" opacity=".45"/>
+      <line x1="0" y1="250" x2="1200" y2="250" stroke="var(--pk-stroke)" stroke-width="1" opacity=".55"/>
+      <g class="deco">
+        <path d="M538,259 q9,-6 18,0 q9,6 18,0" fill="none" stroke="var(--pk-stroke)" stroke-width="1.2" opacity=".45"/>
+        <path d="M596,267 q9,-6 18,0 q9,6 18,0" fill="none" stroke="var(--pk-stroke)" stroke-width="1.2" opacity=".45"/>
+        <path d="M560,274 q9,-6 18,0 q9,6 18,0" fill="none" stroke="var(--pk-stroke)" stroke-width="1.2" opacity=".45"/>
+      </g>
       <!-- 峰をつなぐ点線 -->
-      <path class="arc" d="M301,100 Q612,16 936,112" fill="none" stroke="#2E5D46" stroke-width="2" stroke-dasharray="1.5 9" stroke-linecap="round"/>
+      <path class="arc" d="M302,100 Q610,18 921,108" fill="none" stroke="var(--pk-arc)" stroke-width="2" stroke-dasharray="1.5 9" stroke-linecap="round"/>
     </svg>
     <div class="wrap peak-caps">
-      <span>富士山 Mt. Fuji ・ 静岡</span>
-      <span class="r">レーニア山 Mt. Rainier(タコマ富士)・ シアトル</span>
+      <span><span class="t-ja">富士山 Mt. Fuji ・ 静岡</span><span class="t-en" lang="en">Mt. Fuji ・ Shizuoka</span></span>
+      <span class="r"><span class="t-ja">レーニア山 Mt. Rainier(タコマ富士)・ シアトル</span><span class="t-en" lang="en">Mt. Rainier (Tacoma Fuji) ・ Seattle</span></span>
     </div>
   </div>
 </div>
@@ -162,32 +196,32 @@ footer{border-top:1px solid var(--line);padding:26px 0 52px;font-size:12.5px;let
 <main>
 <section id="about">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">About</span><h2>会について</h2></div>
+    <div class="sec-head"><span class="eyebrow"><span class="t-ja">About</span><span class="t-en" lang="ja">会について</span></span><h2><span class="t-ja">会について</span><span class="t-en" lang="en">About Us</span></h2></div>
     <div class="cols">
-      <p>シアトル静岡県人会(Seattle Shizuoka Club)は、シアトル近郊に暮らす静岡県ゆかりの人々のコミュニティです。静岡出身の方はもちろん、静岡に住んだことがある方、家族のルーツがある方、静岡が好きな方まで、どなたでも参加できます。</p>
-      <p>交流会を通じて親睦を深めるとともに、太平洋をはさんだ静岡とシアトルの架け橋となることを目指しています。</p>
-      <p class="en" lang="en">Seattle Shizuoka Club (SSKK) is a community for people in the greater Seattle area with ties to Shizuoka Prefecture, Japan. Whether you were born there, lived there, have family roots there, or simply love the place, you are welcome. We gather to build friendships and to serve as a bridge between Shizuoka and Seattle across the Pacific.</p>
+      <p class="t-ja">シアトル静岡県人会(Seattle Shizuoka Club)は、シアトル近郊に暮らす静岡県ゆかりの人々のコミュニティです。静岡出身の方はもちろん、静岡に住んだことがある方、家族のルーツがある方、静岡が好きな方まで、どなたでも参加できます。</p>
+      <p class="t-ja">交流会を通じて親睦を深めるとともに、太平洋をはさんだ静岡とシアトルの架け橋となることを目指しています。</p>
+      <p class="en" lang="en">Seattle Shizuoka Club is a community for people in the greater Seattle area with ties to Shizuoka Prefecture, Japan. Whether you were born there, lived there, have family roots there, or simply love the place, you are welcome. We gather to build friendships and to serve as a bridge between Shizuoka and Seattle across the Pacific.</p>
     </div>
   </div>
 </section>
 
 <section id="activities" class="band">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">What We Do</span><h2>活動</h2></div>
+    <div class="sec-head"><span class="eyebrow"><span class="t-ja">What We Do</span><span class="t-en" lang="ja">活動</span></span><h2><span class="t-ja">活動</span><span class="t-en" lang="en">What We Do</span></h2></div>
     <div class="cards">
       <div class="card">
-        <h3>交流会・イベント</h3>
-        <p>会員が集まる親睦会や季節のイベントを開催します。</p>
+        <h3><span class="t-ja">交流会・イベント</span><span class="t-en" lang="en">Socials &amp; Events</span></h3>
+        <p class="t-ja">会員が集まる親睦会や季節のイベントを開催します。</p>
         <p class="en" lang="en">Social gatherings and seasonal events for members and friends.</p>
       </div>
       <div class="card">
-        <h3>静岡との連携</h3>
-        <p>静岡県や県内の市町とのつながりを深め、静岡とシアトルの間の交流を広げていきます。</p>
+        <h3><span class="t-ja">静岡との連携</span><span class="t-en" lang="en">Ties with Shizuoka</span></h3>
+        <p class="t-ja">静岡県や県内の市町とのつながりを深め、静岡とシアトルの間の交流を広げていきます。</p>
         <p class="en" lang="en">Building ties with Shizuoka Prefecture and its municipalities to grow exchange between Shizuoka and Seattle.</p>
       </div>
       <div class="card">
-        <h3>文化・学生交流</h3>
-        <p>文化紹介や学生交流など、日米をつなぐ活動を応援します。</p>
+        <h3><span class="t-ja">文化・学生交流</span><span class="t-en" lang="en">Culture &amp; Students</span></h3>
+        <p class="t-ja">文化紹介や学生交流など、日米をつなぐ活動を応援します。</p>
         <p class="en" lang="en">Supporting cultural programs and student exchange between Japan and the U.S.</p>
       </div>
     </div>
@@ -196,19 +230,19 @@ footer{border-top:1px solid var(--line);padding:26px 0 52px;font-size:12.5px;let
 
 <section id="join">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Join</span><h2>入会のご案内</h2></div>
+    <div class="sec-head"><span class="eyebrow"><span class="t-ja">Join</span><span class="t-en" lang="ja">入会</span></span><h2><span class="t-ja">入会のご案内</span><span class="t-en" lang="en">How to Join</span></h2></div>
     <div class="join-box">
-      <p>静岡にゆかりのある方、静岡に興味のある方なら、どなたでも歓迎します。参加をご希望の方は、メールでお気軽にご連絡ください。メーリングリストで交流会やイベントのご案内をお送りします。</p>
+      <p class="t-ja">静岡にゆかりのある方、静岡に興味のある方なら、どなたでも歓迎します。参加をご希望の方は、メールでお気軽にご連絡ください。メーリングリストで交流会やイベントのご案内をお送りします。</p>
       <p class="en" lang="en">Anyone with a connection to Shizuoka, or simply an interest in it, is welcome to join. Send us an email and we will add you to our mailing list for event announcements.</p>
-      <a class="btn" href="mailto:sea_shizuoka_club@googlegroups.com?subject=Join%20SSKK">入会を申し込む / Join us</a>
+      <a class="btn" href="mailto:contact@seattleshizuoka.org?subject=Join%20Seattle%20Shizuoka%20Club"><span class="t-ja">入会を申し込む / Join us</span><span class="t-en">Join us</span></a>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Contact</span><h2>連絡先</h2></div>
-    <p><a class="email" href="mailto:sea_shizuoka_club@googlegroups.com">sea_shizuoka_club@googlegroups.com</a></p>
+    <div class="sec-head"><span class="eyebrow"><span class="t-ja">Contact</span><span class="t-en" lang="ja">連絡先</span></span><h2><span class="t-ja">連絡先</span><span class="t-en" lang="en">Contact</span></h2></div>
+    <p><a class="email" href="mailto:contact@seattleshizuoka.org">contact@seattleshizuoka.org</a></p>
     <p class="contact-note">Seattle, Washington, U.S.A.</p>
     <!-- Facebookページ開設後、ここにリンクを追加:
     <p class="contact-note"><a href="https://www.facebook.com/XXXX">Facebook</a></p>
@@ -220,5 +254,19 @@ footer{border-top:1px solid var(--line);padding:26px 0 52px;font-size:12.5px;let
 <footer>
   <div class="wrap">シアトル静岡県人会 Seattle Shizuoka Club ・ Seattle, WA ・ © 2026</div>
 </footer>
+
+<script>
+(function(){
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.setlang === l)); });
+    try{ localStorage.setItem('sskk-lang', l); }catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.setlang); }); });
+  var saved = null; try{ saved = localStorage.getItem('sskk-lang'); }catch(e){}
+  if(saved === 'en' || saved === 'ja') setLang(saved);
+})();
+</script>
 </body>
 </html>
